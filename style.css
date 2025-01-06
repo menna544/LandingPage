@@ -373,22 +373,44 @@ margin-top: 20px;
   text-align: center;
 }
 
-.alldiv{
--ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+@keyframes fadeInAndScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.alldiv {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   gap: 15px;
   margin-top: 40px;
+
+  /* Adding animation properties */
+  animation: fadeInAndScale 0.8s ease-in-out;
 }
+
+.alldiv > * {
+  /* Optional: Animate child elements for staggered effect */
+  animation: fadeInAndScale 0.8s ease-in-out;
+  animation-delay: calc(var(--index) * 0.1s);
+  animation-fill-mode: both; /* Ensures animation stays at the final state */
+}
+
 
 .one{
   padding: 20px;
